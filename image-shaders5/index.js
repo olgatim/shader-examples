@@ -76,8 +76,6 @@ function compileShader(type, source) {
   GL.shaderSource(shader, source);
   GL.compileShader(shader);
 
-  console.log(GL.getShaderInfoLog(shader));
-
   return shader;
 }
 
@@ -101,7 +99,7 @@ function createTexture() {
   };
 
   image.src =
-    "https://78.media.tumblr.com/7bd1cd32a3709a8e6821f5ffd3dbcea1/tumblr_pdti2hTKqw1xujoc5o1_540.jpg";
+    "https://images.unsplash.com/photo-1535868118629-f37bcd69ff59?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max";
 }
 
 function updateCanvasSize() {
