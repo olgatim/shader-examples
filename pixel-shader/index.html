@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Image Shaders</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="canvas-wrapper">
+        <canvas id="canvas"></canvas>
+      </div>
+    </div>
+
+    <script id="vertex-shader" type="x-shader/x-vertex">
+      precision mediump float;
+
+      attribute vec2 a_position;
+
+      void main() {
+          gl_Position = vec4(a_position, 0, 1);
+      }
+    </script>
+
+    <script id="fragment-shader" type="x-shader/x-fragment">
+      precision mediump float;
+
+         uniform sampler2D u_texture;
+         uniform float u_canvas_size;
+         uniform float u_time;
+         uniform vec2 u_mouse_position;
+
+         void main() {
+             vec2 texture_coord = gl_FragCoord.xy / u_canvas_size;
+             float block_size = abs(sin(u_time)) / 20.0;
+             vec2 block_position = floor(texture_coord / block_size) * block_size;
+
+             gl_FragColor = (
+                     texture2D(u_texture, block_position)
+                     + texture2D(u_texture, block_position + vec2(1.0, 0.0) * block_size)
+                     + texture2D(u_texture, block_position + vec2(0.0, 1.0) * block_size)
+                     + texture2D(u_texture, block_position + vec2(1.0, 1.0) * block_size)
+                 ) / 4.0;
+         }
+    </script>
+    <script src="index.js"></script>
+  </body>
+</html>

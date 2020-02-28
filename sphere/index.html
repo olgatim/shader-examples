@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Image Shaders</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="canvas-container"></div>
+
+    <script src="https://unpkg.com/three@0.99.0/build/three.min.js"></script>
+    <script src="https://unpkg.com/three@0.99.0/examples/js/controls/OrbitControls.js"></script>
+
+    <script id="sphere-vertex-shader" type="x-shader/x-vertex">
+      varying vec2 vUv;
+
+      void main() {
+          vUv = uv;
+
+          gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+      }
+    </script>
+
+    <script id="sphere-fragment-shader" type="x-shader/x-fragment">
+      varying vec2 vUv;
+
+      void main() {
+          if ((fract(vUv.x * 10.0) < 0.02)
+              || (fract(vUv.y * 10.0) < 0.02)) {
+              gl_FragColor = vec4(vec3(0.0), 1.0);
+          } else {
+              gl_FragColor = vec4(1.0);
+          }
+      }
+    </script>
+    <script src="index.js"></script>
+  </body>
+</html>
