@@ -1,0 +1,38 @@
+.css-canvas {
+  position: relative;
+  width: 600px;
+  height: 600px;
+}
+.img {
+  width: 600px;
+  height: 600px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.img-2 {
+  -webkit-mask: url("./nature-sprite.png");
+  mask: url("./nature-sprite.png");
+  -webkit-mask-size: 2300% 100%;
+  mask-size: 2300% 100%;
+  animation: mask-play 1.4s steps(22) forwards;
+}
+
+@keyframes mask-play {
+  from {
+    -webkit-mask-position: 0% 0;
+    mask-position: 0% 0;
+  }
+  to {
+    -webkit-mask-position: 100% 0;
+    mask-position: 100% 0;
+  }
+}
+
+#canvas {
+  background: url('./cat4.jpg') no-repeat center;
+  background-size: cover;
+}

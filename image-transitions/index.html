@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Image transitions</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div id="content" class="content">
+      <div
+        id="slider"
+        data-images='["./images/cat1.jpg","./images/cat2.jpg","./images/cat4.jpg"]'
+        data-displacement=""
+      ></div>
+
+      <button id="prev">Prev</button>
+      <button id="next">Next</button>
+    </div>
+
+    <script src="./script/three.js"></script>
+    <script src="./script/dat-gui.js"></script>
+    <script src="./script/sketch.js"></script>
+    <script src="./script/gsap.js"></script>
+    <script src="./script/index.js"></script>
+  </body>
+</html>
